@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpaceX</title>
+<link href="https://fonts.cdnfonts.com/css/d-din" rel="stylesheet">
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- BOOTSTRAP OFFCANVAS MOBILE MENU -->
+<div class="offcanvas offcanvas-end mm-oc" tabindex="-1" id="mm" aria-labelledby="mmLabel">
+  <div class="offcanvas-header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/SpaceX-Logo.svg" alt="SpaceX" id="mmLabel">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="mm-links">
+      <a onclick="go('vehicles','v0')">VEHICLES</a>
+      <a onclick="go('hs','hs0')">HUMAN SPACEFLIGHT</a>
+      <a onclick="go('home')">STARLINK</a>
+      <a onclick="go('home')">STARSHIELD</a>
+      <a onclick="go('member')" class="mm-citizen"> CITIZEN PROGRAM</a>
+      <a onclick="go('home')">xAI</a>
+      <a onclick="go('home')">COMPANY</a>
+      <a onclick="go('home')">SHOP</a>
+    </div>
+  </div>
+</div>
+
+<!-- BACK BUTTON -->
+<button class="bb" id="bb" onclick="go('home')">← HOME</button>
+
+<!-- VEHICLE TABS -->
+<div class="vtabs" id="vtabs">
+  <button onclick="sv('v0')" id="t-v0">STARSHIP</button>
+  <button onclick="sv('v1')" id="t-v1">DRAGON</button>
+  <button onclick="sv('v2')" id="t-v2">FALCON 9</button>
+  <button onclick="sv('v3')" id="t-v3">FALCON HEAVY</button>
+</div>
+
+<!-- HS TABS -->
+<div class="htabs" id="htabs">
+  <button onclick="sh('hs0')" id="t-hs0">OVERVIEW</button>
+  <button onclick="sh('hs1')" id="t-hs1">SPACE STATION</button>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nb" id="nb">
+
+  <!-- LOGO -->
+  <div class="nb-logo" onclick="go('home')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/SpaceX-Logo.svg" alt="SpaceX">
+  </div>
+
+  <!-- DESKTOP LEFT LINKS — Bootstrap d-none d-lg-flex -->
+  <div class="nb-links d-none d-lg-flex" id="nb-links-left">
+    <div class="dd">
+      <a>VEHICLES</a>
+      <div class="dd-m">
+        <a onclick="go('vehicles','v0')">STARSHIP</a>
+        <a onclick="go('vehicles','v1')">DRAGON</a>
+        <a onclick="go('vehicles','v2')">FALCON 9</a>
+        <a onclick="go('vehicles','v3')">FALCON HEAVY</a>
+      </div>
+    </div>
+    <div class="dd">
+      <a>HUMAN SPACEFLIGHT</a>
+      <div class="dd-m" style="width:210px;">
+        <a onclick="go('hs','hs0')">OVERVIEW</a>
+        <a onclick="go('hs','hs1')">SPACE STATION</a>
+      </div>
+    </div>
+    <a onclick="go('home')">STARLINK</a>
+    <a onclick="go('home')">STARSHIELD</a>
+  </div>
+
+  <!-- UFO CENTER — Bootstrap d-none d-lg-flex -->
+  <div class="ufo-nav d-none d-lg-flex" id="ufo-nav-btn" onclick="go('member')" title="SpaceX Citizen Program">
+    <div class="ufo-nav-svg ufo-video-wrap">
+      <video class="ufo-video" autoplay muted loop playsinline>
+        <source src="assets/ufo.mp4" type="video/mp4">
+      </video>
+    </div>
+    <span class="ufo-nav-label">CITIZEN</span>
+  </div>
+
+  <!-- DESKTOP RIGHT LINKS — Bootstrap d-none d-lg-flex -->
+  <div class="nb-links d-none d-lg-flex" id="nb-links-right">
+    <div class="dd">
+      <a>xAI</a>
+      <div class="dd-m" style="width:130px;">
+        <a href="https://x.ai/" target="_blank">GROK</a>
+        <a href="https://grokipedia.com/" target="_blank">GROKIPEDIA</a>
+        <a href="https://x.com/" target="_blank">𝕏</a>
+      </div>
+    </div>
+    <div class="dd">
+      <a>COMPANY</a>
+      <div class="dd-m" style="width:140px;">
+        <a href="#">MISSION</a>
+        <a href="#">CAREERS</a>
+        <a href="#">UPDATES</a>
+        <a href="#">INVESTORS</a>
+      </div>
+    </div>
+    <div class="dd">
+      <a>SHOP</a>
+      <div class="dd-m" style="width:120px;">
+        <a href="#">SPACEX</a>
+        <a href="#">xAI</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPCOMING LAUNCHES — Bootstrap d-none d-lg-flex -->
+  <div class="lp d-none d-lg-flex">
+    <div class="lp-h"><span>UPCOMING LAUNCHES</span><span>⌄</span></div>
+    <div class="lp-d">
+      <div class="li">
+        <img src="https://sxcontent9668.azureedge.us/cms-assets/assets/crew_12_MOBILE_template1_f0071d661e.jpg" alt="">
+        <div><h4>Bluebird 8-10 Mission</h4><p>June 17, 2026 · 13:09–14:45 India Time</p></div>
+      </div>
+      <div class="li">
+        <img src="https://sxcontent9668.azureedge.us/cms-assets/assets/SLC_4_E_600x600_24dd9e969c.jpg" alt="">
+        <div><h4>NROL-179 Mission</h4><p>June 18, 2026 · 14:24–14:59 India Time</p></div>
+      </div>
+      <div class="la">ALL UPCOMING LAUNCHES</div>
+    </div>
+  </div>
+
+  <!-- MOBILE: UFO ICON + HAMBURGER — Bootstrap ms-auto d-lg-none -->
+<div class="d-flex align-items-center gap-2 ms-auto d-lg-none">
+    <div class="ufo-nav-mobile" onclick="go('member')" title="Citizen Program">
+      <div class="ufo-video-wrap ufo-video-wrap-mobile">
+        <video class="ufo-video" autoplay muted loop playsinline>
+          <source src="assets/ufo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <button class="hb" id="hb" type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mm"
+            aria-controls="mm">☰</button>
+  </div>
+
+</nav>
+
+<!-- PAGE: HOME -->
+<div class="pg on" id="pg-home">
+
+  <section class="sec h0" style="height:100vh;overflow:hidden;">
+    <video autoplay muted loop playsinline>
+      <source src="https://sxcontent9668.azureedge.us/cms-assets/assets/20260522_Starship_Flight12_web1080_v2_4755b2a6e3.mp4">
+    </video>
+    <div class="h0-ov"></div>
+    <div class="h0-txt">
+      <p>May 22, 2026</p>
+      <h1>Starship's Twelfth Flight Test</h1>
+      <button class="btn-a" style="margin-top:18px;">Watch Launch</button>
+    </div>
+  </section>
+
+  <section class="sec h1">
+    <video autoplay muted loop playsinline>
+      <source src="https://sxcontent9668.azureedge.us/cms-assets/assets/Mars_Rotation_Web_HB_d96299f9de.mp4">
+    </video>
+    <div class="ov"></div>
+    <div class="h1-txt">
+      <h1>MAKING LIFE<br>MULTIPLANETARY</h1>
+      <p>SpaceX was founded under the belief that a future where humanity is out exploring the stars is fundamentally more exciting than one where we are not.</p>
+      <button class="btn-a">EXPLORE →</button>
+    </div>
+  </section>
+
+  <section class="sec h2">
+    <img src="https://sxcontent9668.azureedge.us/cms-assets/assets/Revolutionizing_Space_Tech_Desktop_ec67ad03c2.jpg" alt="">
+    <div class="h2-ov"></div>
+    <div class="h2-txt">
+      <h1>REVOLUTIONIZING SPACE TECHNOLOGY</h1>
+      <p>SpaceX's Starship spacecraft and Super Heavy rocket is a fully reusable transportation system designed to carry both crew and cargo to Earth orbit, the Moon, Mars, and beyond.</p>
+      <button class="btn-b" onclick="go('vehicles','v0')">LEARN MORE →</button>
+    </div>
+  </section>
+
+  <section class="sec h3">
+    <video autoplay muted loop playsinline>
+      <source src="https://sxcontent9668.azureedge.us/cms-assets/assets/Space_X_Falcon_Heavy_UAS_Landing_DESKTOP_compress_b4568daf9c_5e2026727a.mp4">
+    </video>
+    <div class="h3-ov"></div>
+    <div class="h3-txt">
+      <h1>WORLD'S LEADING LAUNCH<br>SERVICE PROVIDER</h1>
+      <p>SpaceX leads the world in launches with its reliable, reusable rockets and is developing the fully and rapidly reusable rockets necessary to transform humanity's ability to access space into something as routine as air travel.</p>
+      <button class="btn-a" onclick="go('vehicles','v2')">RESERVE YOUR RIDE →</button>
+    </div>
+  </section>
+
+  <section class="sec h4">
+    <img src="https://sxcontent9668.azureedge.us/cms-assets/assets/Advancing_Human_Spaceflight_Desktop_61c8ba1c67.jpg" alt="">
+    <div class="h4-ov"></div>
+    <div class="h4-txt">
+      <h1>ADVANCING HUMAN SPACEFLIGHT</h1>
+      <p>Since returning human spaceflight capabilities to the United States in 2020, SpaceX is helping build a new era where not just hundreds of people, but thousands and ultimately millions will be able to explore space.</p>
+      <button class="btn-c" onclick="go('hs','hs0')">JOIN A MISSION →</button>
+    </div>
+  </section>
+
+  <section class="sec h5">
+    <video autoplay muted loop playsinline>
+      <source src="https://sxcontent9668.azureedge.us/cms-assets/assets/Starlink_12_10_20250428_Deploy_website_DESKTOP_14fe7e072c.mp4">
+    </video>
+    <div class="h5-ov"></div>
+    <div class="h5-txt">
+      <h1>DELIVERING HIGH-SPEED<br>INTERNET FROM SPACE</h1>
+      <p>Starlink is the world's most advanced satellite constellation in low-Earth orbit, delivering reliable broadband internet capable of supporting streaming, online gaming, video calls, and more.</p>
+      <button class="btn-c">ORDER NOW →</button>
+    </div>
+    <footer class="ft">
+      <div class="container-fluid p-0">
+        <div class="row w-100 align-items-center gx-3">
+          <div class="col-12 col-md-auto order-md-1"><div class="ft-x"><a href="https://x.com" target="_blank">X</a></div></div>
+          <div class="col-12 col-md-auto order-md-2 mx-md-auto"><div class="ft-nav"><a href="#">CAREERS</a><a href="#">UPDATES</a><a href="#">PRIVACY POLICY</a><a href="#">SUPPLIERS</a><a href="#">INVESTORS</a></div></div>
+          <div class="col-12 col-md-auto order-md-3 text-md-end"><div class="ft-c">© 2026 SPACEX</div></div>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+</div>
+
+<!-- PAGE: VEHICLES -->
+<div class="pg" id="pg-vehicles">
+  <div id="v0">
+    <section class="v-sec v0">
+      <img src="https://www.spacex.com/assets/images/vehicles/starship/starship_hero_d.jpg" alt="Starship">
+      <div class="v0-ov"></div>
+      <div class="v-txt">
+        <div class="ey">Vehicles</div>
+        <h1>STARSHIP</h1>
+        <p>Starship is the world's most powerful launch vehicle ever developed, with the ability to carry over 100 metric tonnes to Earth orbit — fully reusable.</p>
+        <button class="btn-a">OVERVIEW →</button>
+      </div>
+    </section>
+  </div>
+  <div id="v1" style="display:none;">
+    <section class="v-sec v1">
+      <img src="https://www.spacex.com/assets/images/vehicles/dragon/dragon_feature.jpg" alt="Dragon">
+      <div class="v1-ov"></div>
+      <div class="v-txt">
+        <div class="ey">Vehicles</div>
+        <h1>DRAGON</h1>
+        <p>Dragon is the first private spacecraft to take humans to the space station and back, and the only operational spacecraft capable of returning significant cargo to Earth.</p>
+        <button class="btn-a">OVERVIEW →</button>
+      </div>
+    </section>
+  </div>
+  <div id="v2" style="display:none;">
+    <section class="v-sec v2">
+      <img src="https://www.spacex.com/assets/images/vehicles/falcon-9/f9_feature.jpg" alt="Falcon 9">
+      <div class="v2-ov"></div>
+      <div class="v-txt">
+        <div class="ey">Vehicles</div>
+        <h1>FALCON 9</h1>
+        <p>Falcon 9 is the world's first orbital-class reusable rocket. Reliability and reusability allow SpaceX to launch frequently and at lower cost.</p>
+        <button class="btn-a">OVERVIEW →</button>
+      </div>
+    </section>
+  </div>
+  <div id="v3" style="display:none;">
+    <section class="v-sec v3">
+      <img src="https://www.spacex.com/assets/images/vehicles/falcon-heavy/fh_feature.jpg" alt="Falcon Heavy">
+      <div class="v3-ov"></div>
+      <div class="v-txt">
+        <div class="ey">Vehicles</div>
+        <h1>FALCON<br>HEAVY</h1>
+        <p>Falcon Heavy is the most powerful operational rocket in the world by a factor of two, capable of lifting the equivalent of a fully loaded 737 to orbit.</p>
+        <button class="btn-a">OVERVIEW →</button>
+      </div>
+    </section>
+  </div>
+  <footer class="ft" style="position:relative;bottom:auto;padding:22px 40px;background:#000;border-top:1px solid #111;">
+    <div class="container-fluid p-0">
+      <div class="row w-100 align-items-center gx-3">
+        <div class="col-12 col-md-auto order-md-1"><div class="ft-x"><a href="https://x.com" target="_blank">X</a></div></div>
+        <div class="col-12 col-md-auto order-md-2 mx-md-auto"><div class="ft-nav"><a href="#">CAREERS</a><a href="#">UPDATES</a><a href="#">PRIVACY POLICY</a><a href="#">INVESTORS</a></div></div>
+        <div class="col-12 col-md-auto order-md-3 text-md-end"><div class="ft-c">© 2026 SPACEX</div></div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- PAGE: HUMAN SPACEFLIGHT -->
+<div class="pg" id="pg-hs">
+  <div id="hs0">
+    <section class="hs-sec">
+      <img src="https://www.spacex.com/assets/images/human-spaceflight/home/HS-hero.webp" alt="Human Spaceflight">
+      <div class="hs0-ov"></div>
+      <div class="hs-txt">
+        <div class="ey">Human Spaceflight</div>
+        <h1>ADVANCING<br>HUMAN<br>SPACEFLIGHT</h1>
+        <p>SpaceX designs, manufactures, and launches advanced rockets and spacecraft, with the ultimate goal of enabling people to live on other planets.</p>
+        <button class="btn-a">EXPLORE MISSIONS →</button>
+      </div>
+    </section>
+  </div>
+  <div id="hs1" style="display:none;">
+    <section class="hs-sec">
+      <img src="https://www.spacex.com/assets/images/human-spaceflight/iss/iss_feature.jpg" alt="ISS">
+      <div class="hs1-ov"></div>
+      <div class="hs1-txt">
+        <div class="ey">Human Spaceflight</div>
+        <h1>INTERNATIONAL<br>SPACE STATION</h1>
+        <p>SpaceX has been the primary provider of crew transportation to the ISS since 2020, delivering astronauts safely to humanity's permanent home in orbit.</p>
+        <button class="btn-c">VIEW MISSIONS →</button>
+      </div>
+    </section>
+  </div>
+  <footer class="ft" style="position:relative;bottom:auto;padding:22px 40px;background:#000;border-top:1px solid #111;">
+    <div class="container-fluid p-0">
+      <div class="row w-100 align-items-center gx-3">
+        <div class="col-12 col-md-auto order-md-1"><div class="ft-x"><a href="https://x.com" target="_blank">X</a></div></div>
+        <div class="col-12 col-md-auto order-md-2 mx-md-auto"><div class="ft-nav"><a href="#">CAREERS</a><a href="#">UPDATES</a><a href="#">PRIVACY POLICY</a><a href="#">INVESTORS</a></div></div>
+        <div class="col-12 col-md-auto order-md-3 text-md-end"><div class="ft-c">© 2026 SPACEX</div></div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- PAGE: MEMBERSHIP -->
+<div class="pg" id="pg-member">
+  <section class="mem-sec">
+
+    <!-- VIDEO BACKGROUND -->
+    <video autoplay muted loop playsinline class="mem-bg">
+      <source src="https://sxcontent9668.azureedge.us/cms-assets/assets/20260522_Starship_Flight12_web1080_v2_4755b2a6e3.mp4">
+    </video>
+    <div class="mem-ov"></div>
+
+    <!-- LARGE UFO ABOVE CARD -->
+    <div class="ufo-wrap">
+      <div class="ufo-container">
+        <div class="ufo-svg ufo-video-wrap ufo-video-wrap-large">
+          <video class="ufo-video" autoplay muted loop playsinline>
+            <source src="assets/ufo.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- BEAM -->
+        <div class="ufo-beam">
+          <div class="beam-core"></div>
+          <div class="beam-particle p1"></div>
+          <div class="beam-particle p2"></div>
+          <div class="beam-particle p3"></div>
+          <div class="beam-particle p4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOTSTRAP CARD — SIGNUP -->
+    <div class="mem-card" id="mem-card-signup">
+      <h2 class="mem-title">MEMBERSHIP</h2>
+      <div class="mem-diamond"></div>
+      <p class="mem-tagline">JOIN THE MISSION.<br>BE PART OF THE FUTURE.</p>
+
+      <form id="memf" novalidate>
+
+  <!-- STEP 1 of 2 -->
+  <div id="mem-step1">
+    <div class="mem-step-indicator">
+      <div class="mem-step-dot active" id="msd1"></div>
+      <div class="mem-step-line-bar"></div>
+      <div class="mem-step-dot" id="msd2"></div>
+    </div>
+    <p class="mem-step-label">STEP 1 OF 2 — BASIC INFO</p>
+
+    <div class="mem-field">
+      <input id="mem-n" type="text" class="form-control mem-input" placeholder="Full Name">
+      <div class="mem-er" id="mem-en">Name required</div>
+    </div>
+    <div class="mem-field">
+      <input id="mem-e" type="email" class="form-control mem-input" placeholder="Email Address">
+      <div class="mem-er" id="mem-ee">Valid email required</div>
+    </div>
+    <div class="mem-field">
+      <input id="mem-p" type="password" class="form-control mem-input" placeholder="Create Password">
+      <div class="mem-er" id="mem-ep">Min 6 characters required</div>
+    </div>
+    <div class="mem-field">
+      <div class="mem-cs" id="mem-cs">
+        <div class="mem-cs-d" id="mem-cs-d">Country</div>
+        <div class="mem-cs-opts">
+          <div class="cs-opt" data-value="india">India</div>
+          <div class="cs-opt" data-value="usa">United States</div>
+          <div class="cs-opt" data-value="uk">United Kingdom</div>
+          <div class="cs-opt" data-value="canada">Canada</div>
+          <div class="cs-opt" data-value="australia">Australia</div>
+          <div class="cs-opt" data-value="germany">Germany</div>
+          <div class="cs-opt" data-value="japan">Japan</div>
+          <div class="cs-opt" data-value="other">Other</div>
+        </div>
+      </div>
+      <input type="hidden" id="mem-c">
+      <div class="mem-er" id="mem-ec">Please select country</div>
+    </div>
+    <button type="button" class="mem-btn" id="mem-next-btn">
+      CONTINUE →
+    </button>
+  </div>
+
+  <!-- STEP 2 of 2 -->
+  <div id="mem-step2" style="display:none;">
+    <div class="mem-step-indicator">
+      <div class="mem-step-dot done" id="msd1b"></div>
+      <div class="mem-step-line-bar active"></div>
+      <div class="mem-step-dot active" id="msd2b"></div>
+    </div>
+    <p class="mem-step-label">STEP 2 OF 2 — YOUR CONTRIBUTION</p>
+
+    <div class="mem-field">
+      <div class="mem-cs" id="mem-domain-cs">
+        <div class="mem-cs-d" id="mem-domain-d">Field of Expertise</div>
+        <div class="mem-cs-opts">
+          <div class="cs-opt" data-value="aerospace">Aerospace Engineering</div>
+          <div class="cs-opt" data-value="physics">Astrophysics / Physics</div>
+          <div class="cs-opt" data-value="cs">Computer Science / AI</div>
+          <div class="cs-opt" data-value="biology">Biology / Life Sciences</div>
+          <div class="cs-opt" data-value="materials">Materials Science</div>
+          <div class="cs-opt" data-value="robotics">Robotics / Mechatronics</div>
+          <div class="cs-opt" data-value="other">Other Innovation</div>
+        </div>
+      </div>
+      <input type="hidden" id="mem-domain">
+      <div class="mem-er" id="mem-edomain">Please select your field</div>
+    </div>
+
+    <div class="mem-field">
+      <label class="mem-field-label">INNOVATION / CONTRIBUTION</label>
+      <textarea id="mem-contrib" class="form-control mem-input mem-textarea"
+        placeholder="Describe your discovery, invention, or how you can contribute to SpaceX's mission. Be specific — the review team reads every submission." rows="4"></textarea>
+      <div class="mem-er" id="mem-econtrib">Please describe your contribution (min 30 chars)</div>
+    </div>
+
+    <div class="mem-field">
+      <input id="mem-url" type="text" class="form-control mem-input"
+        placeholder="LinkedIn / Portfolio / Research URL">
+      <div class="mem-er" id="mem-eurl">Profile URL required for verification</div>
+    </div>
+
+    <div class="mem-notice">
+      <span class="mem-notice-dot">●</span>
+      All submissions are manually reviewed by the SpaceX Citizen Program team. Only verified innovators are approved.
+    </div>
+
+    <div class="d-flex gap-2 mt-2">
+      <button type="button" class="mem-btn mem-btn-back" id="mem-back-btn">← BACK</button>
+      <button type="submit" class="mem-btn mem-btn-submit">SUBMIT FOR REVIEW</button>
+    </div>
+  </div>
+
+</form>
+      <p class="mem-signin-txt">Already a member? <span class="mem-signin-link" id="mem-signin-toggle">Sign In</span></p>
+    </div>
+
+    <!-- BOOTSTRAP CARD — SIGN IN -->
+    <div class="mem-card" id="mem-card-signin" style="display:none;">
+      <h2 class="mem-title">SIGN IN</h2>
+      <div class="mem-diamond"></div>
+      <p class="mem-tagline">WELCOME BACK,<br>CITIZEN.</p>
+      <form id="sinf" novalidate>
+        <div class="mem-field">
+          <input id="sin-e" type="email" class="form-control mem-input" placeholder="Email Address">
+          <div class="er mem-er" id="sin-ee">Valid email required</div>
+        </div>
+        <div class="mem-field">
+          <input id="sin-p" type="password" class="form-control mem-input" placeholder="Password">
+          <div class="er mem-er" id="sin-ep">Password required</div>
+        </div>
+        <button type="submit" class="mem-btn">ACCESS PORTAL →</button>
+      </form>
+      <p class="mem-signin-txt">New here? <span class="mem-signin-link" id="mem-back-toggle">Create Account</span></p>
+    </div>
+
+    <!-- WELCOME CARD — shown after a successful sign in -->
+    <div class="mem-card mem-success" id="mem-welcome" style="display:none;">
+      <div class="mem-diamond">✓</div>
+      <h2 class="mem-title" style="font-size:20px;">WELCOME, CITIZEN</h2>
+      <p class="mem-tagline">YOU'RE SIGNED IN.<br>READY TO CONTRIBUTE?</p>
+
+      <div class="mem-notice" style="margin-bottom:16px;">
+        <span class="mem-notice-dot">●</span>
+        Share a discovery, idea, or piece of work with the SpaceX Citizen Program team. Every contribution is read by hand.
+      </div>
+
+      <form id="wf" novalidate>
+        <div class="mem-field">
+          <div class="mem-cs" id="wf-domain-cs">
+            <div class="mem-cs-d" id="wf-domain-d">Field of Expertise</div>
+            <div class="mem-cs-opts">
+              <div class="cs-opt" data-value="aerospace">Aerospace Engineering</div>
+              <div class="cs-opt" data-value="physics">Astrophysics / Physics</div>
+              <div class="cs-opt" data-value="cs">Computer Science / AI</div>
+              <div class="cs-opt" data-value="biology">Biology / Life Sciences</div>
+              <div class="cs-opt" data-value="materials">Materials Science</div>
+              <div class="cs-opt" data-value="robotics">Robotics / Mechatronics</div>
+              <div class="cs-opt" data-value="other">Other Innovation</div>
+            </div>
+          </div>
+          <input type="hidden" id="wf-domain">
+          <div class="mem-er" id="wf-edomain">Please select your field</div>
+        </div>
+        <div class="mem-field">
+          <textarea id="wf-contrib" class="form-control mem-input mem-textarea" rows="4" placeholder="Describe your contribution..."></textarea>
+          <div class="mem-er" id="wf-econtrib">Please describe your contribution (min 30 chars)</div>
+        </div>
+        <button type="submit" class="mem-btn mem-btn-submit">CONTRIBUTE TO SPACEX →</button>
+      </form>
+
+      <button class="mem-btn mem-btn-back" onclick="go('home')" style="margin-top:8px;">RETURN TO MISSION →</button>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <!-- PENDING VERIFICATION STATE -->
+<div class="mem-card mem-success" id="mem-success" style="display:none;">
+  <div class="mem-verify-radar">
+    <div class="mvr-ring r1"></div>
+    <div class="mvr-ring r2"></div>
+    <div class="mvr-ring r3"></div>
+    <div class="mvr-dot"></div>
+    <div class="mvr-sweep"></div>
+  </div>
+
+  <h2 class="mem-title" style="color:rgba(100,200,255,0.9);margin-top:16px;font-size:17px;letter-spacing:5px;">
+    SUBMISSION RECEIVED
+  </h2>
+
+  <div class="mem-verify-steps">
+    <div class="mvs-row active">
+      <div class="mvs-dot done">✓</div>
+      <div class="mvs-text">
+        <span class="mvs-label">SUBMITTED</span>
+        <span class="mvs-sub">Your application is in the queue</span>
+      </div>
+    </div>
+    <div class="mvs-line"></div>
+    <div class="mvs-row pending">
+      <div class="mvs-dot pulse">⬤</div>
+      <div class="mvs-text">
+        <span class="mvs-label">TEAM REVIEW</span>
+        <span class="mvs-sub">SpaceX team is verifying credentials</span>
+      </div>
+    </div>
+    <div class="mvs-line"></div>
+    <div class="mvs-row">
+      <div class="mvs-dot locked">◯</div>
+      <div class="mvs-text">
+        <span class="mvs-label">APPROVAL</span>
+        <span class="mvs-sub">Access granted upon approval</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="mem-verify-eta">
+    Estimated review time: <strong>48–72 hours</strong><br>
+    Check your email for updates.
+  </p>
+
+  <button class="mem-btn" onclick="go('home')"
+    style="margin-top:16px;background:rgba(100,180,255,0.08);border-color:rgba(100,180,255,0.35);">
+    RETURN TO MISSION →
+  </button>
+</div>
+
+  </section>
+</div>
+
+<!-- PLANE BUTTON -->
+<button class="pb" id="pb" title="Contact SpaceX">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </svg>
+</button>
+
+<div id="fp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </svg>
+</div>
+
+<!-- CONTACT PANEL -->
+<div class="cp" id="cp">
+  <div class="cp-hd">
+    <span>Contact SpaceX</span>
+    <button id="cp-x">✕</button>
+  </div>
+  <div class="cp-bd">
+    <form id="cf" novalidate>
+      <div class="cf">
+        <label class="form-label">Full Name</label>
+        <input id="cf-n" type="text" class="form-control" placeholder="Your name">
+        <div class="er" id="e-n">Name required</div>
+      </div>
+      <div class="cf">
+        <label class="form-label">Email</label>
+        <input id="cf-e" type="email" class="form-control" placeholder="you@example.com">
+        <div class="er" id="e-e">Valid email required</div>
+      </div>
+      <div class="cf">
+        <label class="form-label">Subject</label>
+        <div class="cs" id="cs">
+          <div class="cs-d" id="cs-d">Select a topic</div>
+          <div class="cs-opts">
+            <div class="cs-opt" data-value="general">General Inquiry</div>
+            <div class="cs-opt" data-value="launch">Launch Information</div>
+            <div class="cs-opt" data-value="careers">Careers</div>
+            <div class="cs-opt" data-value="press">Press &amp; Media</div>
+            <div class="cs-opt" data-value="starlink">Starlink Support</div>
+          </div>
+        </div>
+        <input type="hidden" id="cf-s">
+        <div class="er" id="e-s">Please select a topic</div>
+      </div>
+      <div class="cf">
+        <label class="form-label">Message</label>
+        <textarea id="cf-m" class="form-control" rows="4" placeholder="Your message"></textarea>
+        <div class="er" id="e-m">Message required</div>
+      </div>
+      <button type="submit" class="cp-sub">LAUNCH MESSAGE →</button>
+    </form>
+  </div>
+</div>
+
+<!-- MEMBERSHIP SIDE PANEL -->
+<div class="mp" id="mp">
+  <div class="mp-hd">
+    <div>
+      <span class="mp-tag">SPACEX CITIZEN PROGRAM</span>
+      <p class="mp-sub">Verified contributors only</p>
+    </div>
+    <button id="mp-x">✕</button>
+  </div>
+  <div class="mp-bd">
+    <div id="mp-step1">
+      <div class="mp-info">
+        <div class="mp-info-dot"></div>
+        <p>Submit your credentials. Our team reviews all applications within 72 hours. Approved members gain access to the Citizen Discovery Portal.</p>
+      </div>
+      <form id="mf" novalidate>
+        <div class="cf">
+          <label class="form-label">Full Name</label>
+          <input id="mf-n" type="text" class="form-control" placeholder="Your full name">
+          <div class="er" id="me-n">Name required</div>
+        </div>
+        <div class="cf">
+          <label class="form-label">Email</label>
+          <input id="mf-e" type="email" class="form-control" placeholder="Official email">
+          <div class="er" id="me-e">Valid email required</div>
+        </div>
+        <div class="cf">
+          <label class="form-label">Field of Expertise</label>
+          <div class="cs" id="mcs">
+            <div class="cs-d" id="mcs-d">Select your domain</div>
+            <div class="cs-opts">
+              <div class="cs-opt" data-value="aerospace">Aerospace Engineering</div>
+              <div class="cs-opt" data-value="physics">Astrophysics / Physics</div>
+              <div class="cs-opt" data-value="cs">Computer Science / AI</div>
+              <div class="cs-opt" data-value="biology">Biology / Life Sciences</div>
+              <div class="cs-opt" data-value="materials">Materials Science</div>
+              <div class="cs-opt" data-value="other">Other Innovation</div>
+            </div>
+          </div>
+          <input type="hidden" id="mf-d">
+          <div class="er" id="me-d">Please select your domain</div>
+        </div>
+        <div class="cf">
+          <label class="form-label">Discovery / Innovation</label>
+          <textarea id="mf-m" class="form-control" rows="3" placeholder="Briefly describe your discovery..."></textarea>
+          <div class="er" id="me-m">Description required</div>
+        </div>
+        <div class="cf">
+          <label class="form-label">LinkedIn / Portfolio URL</label>
+          <input id="mf-l" type="text" class="form-control" placeholder="https://linkedin.com/in/yourprofile">
+          <div class="er" id="me-l">Profile URL required</div>
+        </div>
+        <button type="submit" class="cp-sub" style="letter-spacing:2px;">SUBMIT FOR VERIFICATION →</button>
+      </form>
+    </div>
+    <div id="mp-step2" style="display:none;">
+      <div class="mp-pending">
+        <div class="mp-radar">
+          <div class="radar-ring r1"></div>
+          <div class="radar-ring r2"></div>
+          <div class="radar-ring r3"></div>
+          <div class="radar-dot"></div>
+          <div class="radar-sweep"></div>
+        </div>
+        <h3>APPLICATION RECEIVED</h3>
+        <p>Your credentials are under review by the SpaceX Citizen Program team.</p>
+        <div class="mp-status-bar">
+          <div class="mp-step active">SUBMITTED</div>
+          <div class="mp-step-line"></div>
+          <div class="mp-step pending">VERIFYING</div>
+          <div class="mp-step-line"></div>
+          <div class="mp-step">APPROVED</div>
+        </div>
+        <p class="mp-eta">Estimated response: <strong>72 hours</strong></p>
+        <button class="cp-sub" onclick="resetMP()" style="margin-top:18px;">SUBMIT ANOTHER →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
