@@ -40,6 +40,24 @@ $(window).on('scroll', function() {
   $('#nb').toggleClass('dark', $(window).scrollTop() > 50);
 });
 
+function updatePwStrength(v) {
+  var score = 0;
+  if (v.length >= 8)              score++;
+  if (/[A-Z]/.test(v))           score++;
+  if (/[0-9]/.test(v))           score++;
+  if (/[^a-zA-Z0-9]/.test(v))   score++;
+
+  var bar   = $('#pw-bar');
+  var label = $('#pw-label');
+  if (v.length === 0) { bar.css('width','0%'); label.text(''); return; }
+
+  var colors = ['#e74c3c','#e67e22','#f1c40f','#2ecc71'];
+  var labels = ['WEAK','FAIR','GOOD','STRONG'];
+  var widths = ['25%','50%','75%','100%'];
+
+  bar.css({ width: widths[score-1], background: colors[score-1] });
+  label.text(labels[score-1]).css('color', colors[score-1]);
+}
 // main jQuery ready
 $(function() {
 
@@ -238,7 +256,8 @@ $('#mem-next-btn').on('click', function() {
 
   if (!n)              { $('#mem-en').addClass('on'); ok=false; } else $('#mem-en').removeClass('on');
   if (!validEmail(em)) { $('#mem-ee').addClass('on'); ok=false; } else $('#mem-ee').removeClass('on');
-  if (p.length < 6)    { $('#mem-ep').addClass('on'); ok=false; } else $('#mem-ep').removeClass('on');
+var pwOk = p.length >= 8 && /[A-Z]/.test(p) && /[0-9]/.test(p) && /[^a-zA-Z0-9]/.test(p);
+if (!pwOk) { $('#mem-ep').addClass('on'); ok=false; } else $('#mem-ep').removeClass('on');
   if (!c)              { $('#mem-ec').addClass('on'); ok=false; } else $('#mem-ec').removeClass('on');
   if (!ok) return;
 
@@ -272,7 +291,12 @@ $('#mem-domain-cs .cs-opt').on('click', function(e) {
 // Real-time clearing step 1
 $('#mem-n').on('input', function() { if($(this).val().trim())      $('#mem-en').removeClass('on'); });
 $('#mem-e').on('input', function() { if(validEmail($(this).val())) $('#mem-ee').removeClass('on'); });
-$('#mem-p').on('input', function() { if($(this).val().length >= 6) $('#mem-ep').removeClass('on'); });
+$('#mem-p').on('input', function() {
+  var v = $(this).val();
+  var strong = v.length >= 8 && /[A-Z]/.test(v) && /[0-9]/.test(v) && /[^a-zA-Z0-9]/.test(v);
+  if (strong) $('#mem-ep').removeClass('on');
+  updatePwStrength(v);
+});
 
 // Real-time clearing step 2
 $('#mem-contrib').on('input', function() { if($(this).val().trim().length >= 30) $('#mem-econtrib').removeClass('on'); });

@@ -371,9 +371,16 @@
       <div class="mem-er" id="mem-ee">Valid email required</div>
     </div>
     <div class="mem-field">
-      <input id="mem-p" type="password" class="form-control mem-input" placeholder="Create Password">
-      <div class="mem-er" id="mem-ep">Min 6 characters required</div>
+  <input id="mem-p" type="password" class="form-control mem-input" 
+         placeholder="Create Password">
+  <div class="pw-strength-wrap">
+    <div class="pw-bar-bg">
+      <div class="pw-bar-fill" id="pw-bar"></div>
     </div>
+    <span class="pw-strength-label" id="pw-label"></span>
+  </div>
+  <div class="mem-er" id="mem-ep">Min 8 chars, 1 uppercase, 1 number, 1 special character</div>
+</div>
     <div class="mem-field">
       <div class="mem-cs" id="mem-cs">
         <div class="mem-cs-d" id="mem-cs-d">Country</div>
