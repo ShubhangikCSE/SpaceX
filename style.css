@@ -225,24 +225,28 @@ body { font-family:'D-DIN',sans-serif; background:#000; color:#fff; overflow-x:h
   cursor:pointer; padding:0 16px; margin-top:-2px;
   transition:filter .3s;
 }
-.ufo-nav:hover { filter:drop-shadow(0 0 10px rgba(100,200,255,0.9)); }
+.ufo-nav:hover { opacity:0.85; }
 .ufo-nav-svg {
   width:54px; height:30px;
   animation:ufo-nav-hover 2.5s ease-in-out infinite;
 }
 
 /* UFO VIDEO (replaces SVG saucer graphic) */
-.ufo-video-wrap {
-  position:relative; width:100%; height:100%;
-  border-radius:50%; overflow:hidden;
-  box-shadow:0 0 14px rgba(100,200,255,0.55), 0 0 28px rgba(100,200,255,0.25);
-  border:1px solid rgba(180,220,255,0.35);
+/* UFO IMAGE */
+.ufo-img {
+  width: 60px;
+  display: block;
+  animation: ufo-nav-hover 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(100,200,255,0.6));
+  background: transparent;
 }
-.ufo-video {
-  width:100%; height:100%; object-fit:cover; display:block;
+.ufo-img-mobile {
+  width: 44px;
 }
-.ufo-video-wrap-mobile { width:38px; height:22px; }
-.ufo-video-wrap-large { width:160px; height:90px; border-radius:50%/40%; }
+.ufo-img-large {
+  width: 180px;
+  filter: drop-shadow(0 0 18px rgba(100,200,255,0.7));
+}
 @keyframes ufo-nav-hover {
   0%,100% { transform:translateY(0px); }
   50%      { transform:translateY(-5px); }
@@ -528,8 +532,8 @@ body { font-family:'D-DIN',sans-serif; background:#000; color:#fff; overflow-x:h
 .ufo-nav-mobile {
   cursor:pointer;
   animation:ufo-nav-hover 2.5s ease-in-out infinite;
-  filter:drop-shadow(0 0 4px rgba(100,200,255,0.5));
-  transition:filter .3s;
+  display:flex;
+  align-items:center;
 }
 .ufo-nav-mobile:hover {
   filter:drop-shadow(0 0 10px rgba(100,200,255,0.9));

@@ -149,8 +149,7 @@ $(function() {
 
   $('#mp-x').on('click', closeMP);
   $(document).on('click', function(e) {
-    if (mpOpen && !$(e.target).closest('#mp,#sat-btn,#ufo-nav-btn').length) closeMP();
-  });
+if (mpOpen && !$(e.target).closest('#mp,#ufo-nav-btn').length) closeMP();  });
 
   // Membership panel dropdown — scoped to #mcs
   $('#mcs').on('click', function(e) {
